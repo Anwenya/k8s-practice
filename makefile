@@ -17,4 +17,7 @@ job:
 cornjob:
 	kubectl create cj $(n)-cornjob --image=busybox --schedule="" $(dry-run) >> $(n)-cornjob.yml
 
+ingress:
+	kubectl create ing $(n)-ingress --rule="ngx.test/=ngx-svc:80" --class=ngx-ink $(dry-run) >> $(n)-ingress.yml
+
 .PHONY: all
